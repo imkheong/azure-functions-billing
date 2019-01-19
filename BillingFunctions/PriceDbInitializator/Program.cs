@@ -26,8 +26,9 @@ namespace PriceDbInitializator
         }
 
         static void GetDocument(DocumentClient client)
-        {
-            var priceList = client.CreateDocumentQuery<PriceList>(GetDocumentCollectionURI())
+        {            
+            var option = new FeedOptions { EnableCrossPartitionQuery = true };
+            var priceList = client.CreateDocumentQuery<PriceList>(GetDocumentCollectionURI(), option)
                 .Where(p => p.CustomerCode == "ASC");
 
             foreach (var pl in priceList)
