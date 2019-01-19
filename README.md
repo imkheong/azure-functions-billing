@@ -36,19 +36,21 @@ Comprehensive guide describing exactly the architecture, applied design patterns
 
 6. Add CosmosDB properties ```PriceDbUrl``` and ```PriceDbAuthKey``` to ```local.appsettings.json``` in ```PriceDbInitializator``` and ```GenerateBillingIemsFunc```. You can copy this properties from ```Azure CosmosDB Emulator``` - check point 2 (URI and Primary Key).
 
-7. Run project ```PriceDbInitializator``` to init collection ```prices``` in ```crm``` database.
+7. Set CosmosDB properties ```PriceDbName``` to ```crm```, ```PriceDbCollection``` to ```prices``` to ```local.appsettings.json``` in ```PriceDbInitializator``` and ```GenerateBillingIemsFunc```.
 
-8. Add CosmosDB connection string as ```cosmosDb``` to ```local.settings.json``` in ```GenerateInvoiceFunc```. You can copy this string from ```Azure CosmosDB Emulator``` - check point 2 (Primary Connection String).
+8. Run project ```PriceDbInitializator``` to init collection ```prices``` in ```crm``` database.
 
-9. Create an account in [SendGrid](https://sendgrid.com/) and add property ```SendGridApiKey``` to ```local.settings.json``` in ```NotifyInvoiceFunc```.
+9. Add CosmosDB connection string as ```cosmosDb``` to ```local.settings.json``` in ```GenerateInvoiceFunc```. You can copy this string from ```Azure CosmosDB Emulator``` - check point 2 (Primary Connection String).
 
-10. Create an account in [Twilio](https://www.twilio.com/) and add properties ```TwilioAccountSid``` ```TwilioAuthToken``` to ```local.settings.json``` in ```NotifyInvoiceFunc```.
+10. Create an account in [SendGrid](https://sendgrid.com/) and add property ```SendGridApiKey``` to ```local.settings.json``` in ```NotifyInvoiceFunc```.
 
-11. Run JsReport with Docker: ```docker run -p 5488:5488 jsreport/jsreport```. Check JsReport Studio on ```localhost:5488```.
+11. Create an account in [Twilio](https://www.twilio.com/) and add properties ```TwilioAccountSid``` ```TwilioAuthToken``` to ```local.settings.json``` in ```NotifyInvoiceFunc```.
 
-12. Add JsReport url as ```JsReportUrl``` to ```local.settings.json``` in ```PrintInvoiceFunc``` project.
+12. Run JsReport with Docker: ```docker run -p 5488:5488 jsreport/jsreport```. Check JsReport Studio on ```localhost:5488```.
 
-13. Add JsReport template with name ```INVOICE``` and content:
+13. Add JsReport url as ```JsReportUrl``` to ```local.settings.json``` in ```PrintInvoiceFunc``` project.
+
+14. Add JsReport template with name ```INVOICE``` and content:
 
 ```html
 <h1>Invoice {{invoiceNumber }}</h1>
